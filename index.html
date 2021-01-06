@@ -21,11 +21,11 @@
         async function subscribe() {
 
             let sw = await navigator.serviceWorker.ready;
-            let push = await sw.pushManager.subscribe({
+            let pushed = await sw.pushManager.subscribe({
                 userVisibleOnly: true,
                 applicationServerKey: 'BJfPHTQGHKhuTslWOjmFljv0HPjpW_vpZvQKsAbPA2fwU8IjWTVjprJx24ZkBNF2tcFu_fYqt49m3cqZa5Ffejc'
             })
-            console.log(JSON.stringify(push));
+            console.log(JSON.stringify(pushed));
             var push = require('web-push');
 
             // this code is to generate vapids as we need to generate it once so we'll comment this and used geneated for future
@@ -41,7 +41,7 @@
 
             push.setVapidDetails('mailto:vinkesh85@gmail.com', vapidKeys.publicKey, vapidKeys.privateKey)
 
-            let sub = JSON.stringify(push);
+            let sub = JSON.stringify(pushed);
             push.sendNotification(sub, 'test message')
         }
 
