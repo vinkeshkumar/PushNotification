@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
-    <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
 
 
-        <button onclick="subscribe()">Subscribe</button>
-        <script>
-            addEventListener('load',async()=>{
-                let sw=await navigator.serviceWorker.register('./sw.js')
-                console.log(sw);
+    <button onclick="subscribe()">Subscribe</button>
+    <script>
+        addEventListener('load', async () => {
+            let sw = await navigator.serviceWorker.register('./sw.js')
+            console.log(sw);
+        })
+
+        async function subscribe() {
+
+            let sw = await navigator.serviceWorker.ready;
+            let push = await sw.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: 'BJfPHTQGHKhuTslWOjmFljv0HPjpW_vpZvQKsAbPA2fwU8IjWTVjprJx24ZkBNF2tcFu_fYqt49m3cqZa5Ffejc'
             })
+            console.log(JSON.stringify(push));
+            var push = require('web-push');
 
-            async function subscribe(){
-                
-                let sw=await navigator.serviceWorker.ready;
-                let push=await sw.pushManager.subscribe({
-                    userVisibleOnly:true,
-                    applicationServerKey:'BJfPHTQGHKhuTslWOjmFljv0HPjpW_vpZvQKsAbPA2fwU8IjWTVjprJx24ZkBNF2tcFu_fYqt49m3cqZa5Ffejc'
-                })
-                console.log("test="+JSON.stringify(push));
+            // this code is to generate vapids as we need to generate it once so we'll comment this and used geneated for future
+
+            //let vapidKeys= push.generateVAPIDKeys();
+            //console.log(vapidKeys);
+
+            let vapidKeys = {
+                publicKey: 'BJfPHTQGHKhuTslWOjmFljv0HPjpW_vpZvQKsAbPA2fwU8IjWTVjprJx24ZkBNF2tcFu_fYqt49m3cqZa5Ffejc',
+                privateKey: 'D80XxdSxTy0myMLq1NKFqZKgXxz8JgdJDb_4NrkN_98'
             }
 
 
-        </script>
-    </body>
+            push.setVapidDetails('mailto:vinkesh85@gmail.com', vapidKeys.publicKey, vapidKeys.privateKey)
+
+            let sub = JSON.stringify(push);
+            push.sendNotification(sub, 'test message')
+        }
+
+
+    </script>
+</body>
+
 </html>
