@@ -14,8 +14,7 @@ let vapidKeys = {
 push.setVapidDetails('mailto:vinkesh85@gmail.com', vapidKeys.publicKey, vapidKeys.privateKey)
 
 let sub ={"endpoint":
-"https://fcm.googleapis.com/fcm/send/fq9jTVpUylk:APA91bHiTOPMEqkaZv8gXkDbUCcmALvx941mZryadqpR6mKCSxcy4-mriXN-CIfpAJOPEUaAj2Hi3fQwLqPABJCxx4dB1dXZi07JDJeQHsPSenv2Tv972u4PHfTKnO9XcFLJkWfN6K54",
-"expirationTime":null,"keys":{"p256dh":"BNO-Y5T5ACwgCrXj0vYnCwxFBFJAok4fYdBKBiBRKiDDP0U_lT2VPnPhcRgsohx1-_vcFsPfAeo94AL4ioB63HQ","auth":"5jjAGuD1gTLFYKP5JRCMtA"}}
-
+"https://sg2p.notify.windows.com/w/?token=BQYAAACcUYcDnm5OAdO7mdtHhKu3Xi0ousC1EzhdwAGm%2bZZG41zcD7Sg8OZKO6cs37BYpkv%2fxLYYyLK6mG3cPu9l9iUUngf3Wy7NOgW37O5ulycZZjvjZDeexngYXk%2fMoMmeqEq9WWt%2fq7yKLewghFLV1THGDyIzRbaVyjYl6cn6m%2bo1R%2fFOv26yag7FWZvabjtQpNoDLoFoGoZjQBDP24RwWL9zb%2fwIePM1IXqhgi8zHo%2bfYarzANZ2cH9RystIR85SNedI7I5nQa9wvfnVGkmkUS5y4Wfx%2fuGiG7jkYvI%2f4voaWN3jO68jIEaORbcVRjaqGEitFwaDPbEFx%2bhWp4S1TsAmeYvQFpDL7O7fPOak4RznuQ%3d%3d",
+"expirationTime":null,"keys":{"p256dh":"BJCVbC77VKLxMDJ8D65L3fGKJ0R0RdksoaEsv_hQGVIbYMdHWGbqc0ZSQeshtnWA58jLOJSfO1tM2oaaUkRcG-4","auth":"M9k1bIhiNG-aLc63sUlIeQ"}}
 push.sendNotification(sub, 'test message')
 
